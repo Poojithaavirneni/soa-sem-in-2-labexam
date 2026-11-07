@@ -1,0 +1,22 @@
+description: Sign-in endpoint returns a non-empty dynamic token
+
+request:
+  method: POST
+  url: /ms1/signin
+  headers:
+    Content-Type: application/json
+  body:
+    username: testuser
+    password: password123
+
+response:
+  status: 200
+  headers:
+    Content-Type: application/json
+  body:
+    token: sample-token
+  matchers:
+    body:
+      - path: $.token
+        type: by_regex
+        value: ".+"
